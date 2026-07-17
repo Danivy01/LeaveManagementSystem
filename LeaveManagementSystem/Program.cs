@@ -1,10 +1,15 @@
 using LeaveManagementSystem.Components;
+using LeaveManagementSystem.Interfaces;
+using LeaveManagementSystem.Repository;
+using LeaveManagementSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+builder.Services.AddScoped<ILeaveService, LeaveService>();
+builder.Services.AddScoped<ILeaveRepo, LeaveRepo>();
 
 var app = builder.Build();
 
