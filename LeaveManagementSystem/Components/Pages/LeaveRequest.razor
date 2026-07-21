@@ -1,0 +1,29 @@
+﻿@page "/leave"
+@inject ILeaveService leaveService
+
+<h3 class="text-center">Leave Requests</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Employee</th>
+            <th>Type of Leave</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in leaves)
+        {
+            <LeaveCard LeaveData="item"/>
+        }
+    </tbody>
+</table>
+
+@code {
+    private List<Leave> leaves = new List<Leave>();
+    protected override void OnInitialized()
+    {
+        leaves = leaveService.GetLeaveList();
+    }
+
+}

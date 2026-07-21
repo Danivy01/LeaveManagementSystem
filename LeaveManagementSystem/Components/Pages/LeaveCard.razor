@@ -1,0 +1,9 @@
+﻿<tr>
+    <td>@LeaveData.EmployeeName</td>
+    <td>@LeaveData.LeaveType</td>
+    <td>@LeaveData.Status</td>
+</tr>
+
+@code {
+    [Parameter] public Leave? LeaveData { get; set; }
+}
