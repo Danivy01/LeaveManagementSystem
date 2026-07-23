@@ -8,6 +8,11 @@ namespace LeaveManagementSystem.Services {
         public LeaveService(ILeaveRepo leaveRepo) {
             this.leaveRepo = leaveRepo;
         }
+
+        public void Add(Leave leave) {
+            leaveRepo.Add(leave);
+        }
+
         public List<Leave> GetLeaveList() {
             return leaveRepo.GetLeaveList();
         }

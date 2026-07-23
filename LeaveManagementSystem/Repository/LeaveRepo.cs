@@ -8,6 +8,14 @@ namespace LeaveManagementSystem.Repository {
             new Leave{ ID = 2, EmployeeName = "John Doe Cruz", LeaveType = "Sick", Status = "Pending"},
             new Leave{ ID = 3, EmployeeName = "Danivy Maris Jasmin", LeaveType = "Vacation Leave", Status = "Approved"}
         ];
+
+        public void Add(Leave leave) {
+            leave.ID = leaves.Count ==  0 ? 1 : leaves.Max(x => x.ID) + 1;
+            leave.Status = "Pending";
+
+            leaves.Add(leave);
+        }
+
         public List<Leave> GetLeaveList() {
             return leaves;
         }
