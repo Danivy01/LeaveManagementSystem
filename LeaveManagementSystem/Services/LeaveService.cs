@@ -13,6 +13,10 @@ namespace LeaveManagementSystem.Services {
             leaveRepo.Add(leave);
         }
 
+        public Leave GetID(int ID) {
+            return leaveRepo.GetID(ID);
+        }
+
         public List<Leave> GetLeaveList() {
             return leaveRepo.GetLeaveList();
         }

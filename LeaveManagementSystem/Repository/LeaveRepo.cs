@@ -16,6 +16,10 @@ namespace LeaveManagementSystem.Repository {
             leaves.Add(leave);
         }
 
+        public Leave GetID(int ID) {
+            return leaves.FirstOrDefault(x => x.ID == ID);     
+        }
+
         public List<Leave> GetLeaveList() {
             return leaves;
         }
