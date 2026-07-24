@@ -5,5 +5,6 @@ namespace LeaveManagementSystem.Interfaces {
         List<Leave> GetLeaveList();
         void Add(Leave leave);
         Leave GetID(int ID);
+        void Edit(Leave leave);
     }
 }
