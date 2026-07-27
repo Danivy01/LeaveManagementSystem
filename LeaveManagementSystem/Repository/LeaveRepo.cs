@@ -16,6 +16,16 @@ namespace LeaveManagementSystem.Repository {
             leaves.Add(leave);
         }
 
+        public void Delete(Leave leave) {
+            var item = GetID(leave.ID);
+
+            if (item == null) {
+                return;
+            }
+
+            leaves.Remove(item);
+        }
+
         public void Edit(Leave leave) {
             var item = GetID(leave.ID);
 
