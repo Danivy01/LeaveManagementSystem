@@ -28,7 +28,7 @@ namespace LeaveManagementSystem.Repository {
             item.Status = leave.Status;
         }
 
-        public Leave GetID(int ID) {
+        public Leave? GetID(int ID) {
             return leaves.FirstOrDefault(x => x.ID == ID);     
         }
 
