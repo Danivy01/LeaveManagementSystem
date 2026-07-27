@@ -6,5 +6,6 @@ namespace LeaveManagementSystem.Interfaces {
         void Add(Leave leave);
         Leave GetID(int ID);
         void Edit(Leave leave);
+        void Delete(Leave leave);
     }
 }
