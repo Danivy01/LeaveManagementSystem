@@ -16,6 +16,22 @@ namespace LeaveManagementSystem.Repository {
             leaves.Add(leave);
         }
 
+        public void Edit(Leave leave) {
+            var item = GetID(leave.ID);
+
+            if (item == null) {
+                return;
+            }
+
+            item.EmployeeName = leave.EmployeeName;
+            item.LeaveType = leave.LeaveType;
+            item.Status = leave.Status;
+        }
+
+        public Leave? GetID(int ID) {
+            return leaves.FirstOrDefault(x => x.ID == ID);     
+        }
+
         public List<Leave> GetLeaveList() {
             return leaves;
         }
