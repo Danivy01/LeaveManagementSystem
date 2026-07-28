@@ -5,10 +5,17 @@
     <td>
         <div>
             <a href="/leave/edit/@LeaveData.ID" class="text-primary" asp-rout><i class="fa-solid fa-pen"></i></a>
+            <button class="text-danger btn-link border-0 bg-transparent" @onclick="NotifyDeleteClicked"><i class="fa-solid fa-trash"></i></button>
         </div>
     </td>
 </tr>
 
 @code {
     [Parameter] public Leave? LeaveData { get; set; }
+    [Parameter] public EventCallback<Leave> OnDelete { get; set; }
+
+    private async Task NotifyDeleteClicked()
+    {
+        await OnDelete.InvokeAsync(LeaveData);
+    }
 }

@@ -13,6 +13,10 @@ namespace LeaveManagementSystem.Services {
             leaveRepo.Add(leave);
         }
 
+        public void Delete(Leave leave) {
+            leaveRepo.Delete(leave);
+        }
+
         public void Edit(Leave leave) {
             leaveRepo.Edit(leave);
         }
