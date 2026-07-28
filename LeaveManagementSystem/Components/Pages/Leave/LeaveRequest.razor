@@ -16,16 +16,61 @@
     <tbody>
         @foreach (var item in leaves)
         {
-            <LeaveCard LeaveData="item"/>
+            <LeaveCard LeaveData="item" OnDelete="HandleDelete"/>
         }
     </tbody>
 </table>
 
+@if (showDeleteModal)
+{
+    <div class="modal fade show d-block">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete Leave</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this leave request?</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" @onclick="CloseModal">Cancel</button>
+                    <button class="btn btn-danger" @onclick="DeleteLeave">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
 @code {
     private List<Leave> leaves = new List<Leave>();
+    private Leave? selectedLeave;
+    private bool showDeleteModal = false;
+
     protected override void OnInitialized()
     {
         leaves = leaveService.GetLeaveList();
+    }
+
+    private void HandleDelete(Leave leave)
+    {
+        selectedLeave = leave;
+        showDeleteModal = true;
+    }
+
+    private void CloseModal()
+    {
+        showDeleteModal = false;
+    }
+
+    private void DeleteLeave()
+    {
+        if (selectedLeave == null)
+        {
+            return;
+        }
+        leaveService.Delete(selectedLeave);
+        CloseModal();
     }
 
 }
